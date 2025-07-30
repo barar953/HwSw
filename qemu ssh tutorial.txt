@@ -1,0 +1,64 @@
+How to connect to the qemu via the vm? 
+[Your Local Machine] ←(VS Code SSH)→ [Intermediate VM] ←(QEMU)→ [QEMU VM]
+
+0: 
+copy the img the course staff gave us. 
+
+1: 
+from your Intermediate VM run - 
+
+ qemu-system-x86_64 \
+  -m 4096m \
+  -nographic \
+  -cpu host \
+  -accel kvm \
+  -nic user,model=virtio-net-pci,hostfwd=tcp::2222-:22 \
+  -drive file=jammy-server-cloudimg-amd64-disk-kvm.img,format=qcow2
+
+*that defines a port between the qemu and our vm. 
+*enter user name and password. 
+
+2: 
+on the qemu - 
+
+sudo systemctl enable ssh
+sudo systemctl start ssh
+
+ *check if worked form the Intermediate VM 
+
+ssh root@localhost -p 2222
+
+*should connect again to the qemu
+
+3: 
+on the vs code: 
+open the emote ssh configuration and add the qemu as host - 
+
+Host qemu-vm
+    HostName localhost
+    User root
+    Port 2222
+    ProxyJump (your.user.name)@(Intermediate.VM.ip)
+
+4: 
+on your local host terminal gen a new ssh key - 
+
+ssh-keygen -t ed25519 -C "qemu-access"
+
+*copy the key to use it in the following step.
+
+5:
+on the qemu: 
+
+mkdir -p ~/.ssh
+nano ~/.ssh/authorized_keys
+
+*paste your key and exit the file. 
+
+ chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+
+6: we are ready to go - try to use the ssh connection via vscode to connect the qemu directly. 
+
+
+
