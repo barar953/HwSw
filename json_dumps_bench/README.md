@@ -68,7 +68,7 @@ To compare original vs optimized versions:
 
 3. **Compare results:**
    ```bash
-   python3 -m pyperformance compare original_results.json custom_results.json
+   python3 -m pyperformance compare_to original_results.json custom_results.json
    ```
 
 ## Optimization Strategy
