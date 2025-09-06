@@ -309,7 +309,8 @@ def dumps_fast(obj, **kwargs):
             # Fall back to optimized standard library version
             return dumps_optimized(obj, **kwargs)
 
-
+# In order to run the fast dumps need to use the line below
+#json.dumps = dumps_fast
 if __name__ == "__main__":
     # Test the implementations
     test_data = {
