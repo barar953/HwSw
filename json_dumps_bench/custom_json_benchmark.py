@@ -1,4 +1,6 @@
 import json
+## In order to run the fast dumps need to use the line below and put in note the line above
+#import my_json_dumps as json 
 import sys
 from pathlib import Path
 
