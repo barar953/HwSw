@@ -56,7 +56,8 @@ python3 custom_logging_benchmark.py --mode my --handler file --formatter detaile
 ## Dependencies
    - Python 3.x
    - Python standard logging library
-    
+   -  `pyperf` - for benchmarking
+
 ## Optimization Strategy
    - Recognize bottlenecks and repetitive operations
    - Recognize unnecessary actions
