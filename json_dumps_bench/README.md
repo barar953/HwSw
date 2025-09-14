@@ -87,6 +87,17 @@ Based on perf analysis, the main bottlenecks are:
 3. **Python interpreter overhead** (10% of CPU time)
    - Main interpreter loop
    - Dictionary lookups
+     
+## Dependencies
+
+- `pyperf` - for benchmarking
+- `orjson` - for faster JSON processing
+- `ujson`  - alternative fast JSON library
+
+Install with:
+```bash
+pip install pyperf orjson ujson
+```
 
 ### Recommended Optimizations
 
@@ -95,25 +106,7 @@ Based on perf analysis, the main bottlenecks are:
 3. **Optimize memory allocation patterns**
 4. **Use compact separators by default**
 
-## Dependencies
-
-- `pyperf` - for benchmarking
-- `orjson` (optional) - for faster JSON processing
-- `ujson` (optional) - alternative fast JSON library
-
-Install with:
-```bash
-pip install pyperf orjson ujson
-```
-
-## Performance Analysis
-
-Use the perf report from your original benchmark to identify:
-- Memory allocation bottlenecks
-- String processing overhead
-- Interpreter loop optimization opportunities
-
-Expected improvements:
+## Expected improvements:
 - **15-20%** from production Python build
 - **10-15%** from faster JSON libraries
 - **5-10%** from memory optimizations
