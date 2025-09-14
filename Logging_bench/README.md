@@ -5,27 +5,12 @@ This directory contains tools and resources for benchmarking and optimizing logg
 ## Directory Structure
 
 ```
-HwSwProject/
 └── logging/
-    ├── main.py           # Example: Custom logger with file handler and Sentry integration
-    ├── logger.py         # Example: Python logging configuration and log level demo
-    ├── logging.py        # Example: Django-style logging configuration dictionary
-    ├── logcall.py        # Example: Logging decorator for Python functions
-    ├── log.py            # Example: Labber log file handler
-    ├── server.py         # Example: Flask server with logging endpoints
-    ├── factor.py         # Example: Factorization script (TODO: switch print to logging)
-    ├── nox.py            # Example: Nox test automation config for logging
-    ├── setup.py          # Example: Python package setup for logging
-    ├── log_1.txt         # Sample log output from model training (with config info)
-    ├── keywords.txt      # Syntax highlighting keywords for logging levels/methods
-    ├── csv.txt           # Example CSV data for logging or analytics
-    ├── slack.md          # Guide: Integrate logging notifications with Slack
-    ├── INSTALL           # How to compile logging code (run `make`)
-    ├── toc.md            # Logging documentation table of contents
-    ├── index.md          # Introduction to logging, investigation, and auditing
-    ├── _index.md         # Advanced overview and integration documentation
-    ├── index.qmd         # Logs documentation in Quarto format
-    └── README.md         # This file
+HwSwProject/
+└── logging_bench/
+    ├── custom_logging_benchmark.py  # Enhanced benchmark with custom data support
+    ├── my_logging_dumps.py         # Copy of original json.dumps with optimization hooks
+    └── README.md               # This file
 ```
 
 ## Files Description
@@ -125,7 +110,3 @@ Expected improvements:
 - **Up to 30%** with asynchronous or batch logging
 
 ---
-
-> _This README adapts the structured, detailed style of the JSON benchmarking README to fit logging performance and analysis. Update with project-specific logging workflows, handler examples, or integration instructions as needed._
-
-_Results may be incomplete due to search limitations. To view all files, visit the [logging directory in your repository](https://github.com/barar953/HwSw/tree/master/logging)._
