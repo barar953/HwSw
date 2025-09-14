@@ -217,9 +217,6 @@ def _optimize_message_formatting():
     _orig.LogRecord.getMessage = _fast_getMessage
 
 
-# Initial detection (in case handlers already exist)
-
-
 # Apply optimizations
 _optimize_message_formatting()
 
