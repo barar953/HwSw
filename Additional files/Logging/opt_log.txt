@@ -1,0 +1,13 @@
+2024-09-09 09:46:40,000 DEBUG demo [pid=1328 tid=140454297104384] sample_log_app.py:38 - warmup start
+2024-09-09 09:46:40,000 INFO demo [pid=1328 tid=140454297104384] sample_log_app.py:39 - iteration=0 starting
+2024-09-09 09:46:40,000 WARNING demo [pid=1328 tid=140454297104384] sample_log_app.py:40 - check point i=0
+2024-09-09 09:46:40,000 INFO demo [pid=1328 tid=140454297104384] sample_log_app.py:41 - iteration=1 starting
+2024-09-09 09:46:40,000 ERROR demo [pid=1328 tid=140454297104384] sample_log_app.py:45 - caught exception (i=1)
+Traceback (most recent call last):
+  File "/root/HwSw/logging_bench/sample_log_app.py", line 43, in emit_sequence
+    raise ValueError("demo error")
+ValueError: demo error
+2024-09-09 09:46:40,000 WARNING demo [pid=1328 tid=140454297104384] sample_log_app.py:46 - check point i=1
+2024-09-09 09:46:40,000 INFO demo [pid=1328 tid=140454297104384] sample_log_app.py:47 - iteration=2 starting
+2024-09-09 09:46:40,000 WARNING demo [pid=1328 tid=140454297104384] sample_log_app.py:48 - check point i=2
+2024-09-09 09:46:40,000 ERROR demo [pid=1328 tid=140454297104384] sample_log_app.py:49 - final error code=42
