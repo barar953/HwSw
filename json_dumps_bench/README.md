@@ -26,67 +26,19 @@ Copy of the original Python json.dumps implementation with:
 - Complete original functionality preserved
 - Optimization hooks added (dumps_optimized, dumps_fast)
 - Support for faster JSON libraries (orjson, ujson)
-- Easy-to-modify structure for performance improvements
 
 ## Usage
 
 ### Running Benchmarks
 
-1. **Basic benchmark with all test cases:**
-   ```bash
-   python3 custom_json_benchmark.py
-   ```
+```bash
+# Run basic benchmark
+perf record -F 99 -g -- python3 json_dumps_bench/custom_json_benchmark.py --cases NESTED --impl baseline
 
-2. **Benchmark specific test cases:**
-   ```bash
-   python3 custom_json_benchmark.py --cases SIMPLE,NESTED,HUGE
-   ```
-
-3. **Benchmark with custom JSON file:**
-   - Edit `custom_json_benchmark.py` and change `/path/to/your/file.json` to your file path
-   - Run: `python3 custom_json_benchmark.py --cases CUSTOM`
-
-4. **Performance profiling with perf:**
-   ```bash
-   perf record -F 999 -g -- python3 custom_json_benchmark.py --cases CUSTOM
-   perf report
-   ```
-
-### Comparing Performance
-
-To compare original vs optimized versions:
-
-1. **Run original benchmark:**
-   ```bash
-   python3 -m pyperformance run --bench json_dumps -o original_results.json
-   ```
-
-2. **Run custom benchmark:**
-   ```bash
-   python3 custom_json_benchmark.py -o custom_results.json
-   ```
-
-3. **Compare results:**
-   ```bash
-   python3 -m pyperformance compare_to original_results.json custom_results.json
-   ```
-
-## Optimization Strategy
-
-Based on perf analysis, the main bottlenecks are:
-
-1. **Memory management** (25% of CPU time)
-   - Debug memory validation overhead
-   - Unicode string validation
-   - Memory allocation/deallocation
-
-2. **JSON processing** (5% of CPU time)
-   - String escaping
-   - Dictionary/object encoding
-
-3. **Python interpreter overhead** (10% of CPU time)
-   - Main interpreter loop
-   - Dictionary lookups
+# Benchmark specific test cases
+perf record -F 99 -g -- python3 json_dumps_bench/custom_json_benchmark.py --cases NESTED --impl optimized
+perf record -F 99 -g -- python3 json_dumps_bench/custom_json_benchmark.py --cases NESTED --impl fast
+```
      
 ## Dependencies
 
@@ -99,15 +51,23 @@ Install with:
 pip install pyperf orjson ujson
 ```
 
-### Recommended Optimizations
+## Optimization Strategy
+- Python interpreter as a main consumer
+- Collections serialization is a main bottleneck  
+- Repetitive actions – encode the same input again and again
+- Keeping identical output 
 
-1. **Use production Python build** (not python3-dbg)
-2. **Integrate faster JSON libraries** (orjson, ujson)
-3. **Optimize memory allocation patterns**
-4. **Use compact separators by default**
+### 2-way solution:
+**1. Optimized_json:**
+- Fast-path recognition
+- Caching collections
+- Compact separators
+  
+**2. Fast_json:**
+- Orjson Rust library
+- Compiled library
+- Better Memory Management
 
-## Expected improvements:
-- **15-20%** from production Python build
-- **10-15%** from faster JSON libraries
-- **5-10%** from memory optimizations
-- **Total: 30-50%** performance improvement
+## Expected improvements:(based on NESTED case)
+- **5.56x Faster** Fast_json then baseline
+- **8.85x Faster** Optimized_json then baseline
