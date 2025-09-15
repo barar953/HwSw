@@ -1,0 +1,48 @@
+=============================
+ Section 1: JSON_DUMPS
+=============================
+
+- I am working with the `json_dumps_bench` benchmark as part of my project. 
+  I would like guidance on how to build the work process step by step, starting 
+  from the baseline and progressing towards optimized implementations.
+
+- After establishing the baseline and identifying bottlenecks through profiling, 
+  I would like to explore possible directions for optimization, including both 
+  custom improvements and the use of alternative libraries such as `orjson`.
+
+- Please provide a more detailed explanation of the profiling results obtained 
+  with `perf` and FlameGraph, focusing on the major hotspots and their impact 
+  on performance.
+
+- How can the `json_dumps` benchmark be analyzed without manually downloading 
+  and installing all components on the machine?
+
+- Could you suggest possible optimization strategies that are realistic within 
+  the Python ecosystem?
+
+- I would like to iteratively improve the optimized implementation until we 
+  achieve at least a 5% performance improvement compared to the baseline.
+
+
+=============================
+ Section 2: LOGGING
+=============================
+
+- I am examining a customized logging implementation (`my_logging.py`).  
+  I would like clarification on how the script verifies that outputs are 
+  consistent between the standard logging module and the customized version.
+
+- Please summarize the exact modifications applied to `my_logging.py` compared 
+  to the standard logging implementation, with a focus on design choices 
+  and performance implications.
+
+- I would like to refine the interpretation of the performance results:  
+  ▪ Average runtime was reduced significantly (e.g., from 3.212 to 2.443).  
+  ▪ The relative improvement reached ~31%.  
+  ▪ Standard deviations were low, indicating stable measurements.  
+
+- Please confirm the correct description of external tools and libraries:  
+  ▪ No external Python libraries were used; the optimization was achieved by a 
+    drop-in replacement (`my_logging.py`).  
+  ▪ System-level tools (`perf`, `FlameGraph`) were used for profiling and 
+    visualization purposes.
