@@ -33,26 +33,14 @@ Optimized implementation of Python's logging module that:
 
 ### Running Benchmarks
 
-1. **Basic benchmark with default settings:**
-   ```bash
-   python3 custom_logging_benchmark.py --mode std
-  ``` 
-2. **Benchmark with optimized logging:**
-
 ```bash
-python3 custom_logging_benchmark.py --mode my
+# Run standard benchmark
+perf record -F 99 -g -- python3 logging_bench/custom_logging_benchmark.py --mode std -n 300000 --enabled-c
+
+# Run optimized benchmark
+perf record -F 99 -g -- python3 logging_bench/custom_logging_benchmark.py --mode my -n 300000 --enabled-c
 ```
 
-3. **Benchmark with custom parameters:**
-
-```bash
-python3 custom_logging_benchmark.py --mode my --num-messages 200000 --repeat 5
-```
-4. **Performance profiling with specific handlers:**
-
-```bash
-python3 custom_logging_benchmark.py --mode my --handler file --formatter detailed
-```
 ## Dependencies
    - Python 3.x
    - Python standard logging library
