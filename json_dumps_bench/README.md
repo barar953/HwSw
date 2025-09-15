@@ -69,5 +69,5 @@ pip install pyperf orjson ujson
 - Better Memory Management
 
 ## Expected improvements:(based on NESTED case)
-- **5.56x Faster** Fast_json then baseline
-- **8.85x Faster** Optimized_json then baseline
+- **5.56x Faster** Fast_json then baseline.
+- **8.85x Faster** Optimized_json then baseline.
