@@ -4,15 +4,14 @@ A comprehensive benchmarking toolkit for analyzing and optimizing Python perform
 
 ## Project Overview
 
-This project provides specialized benchmarking tools for two critical Python operations:
-1. JSON Dumps Performance Testing
-2. Logging System Performance Analysis
+This project provides specialized benchmarking tools and acceleration for two critical Python operations:
+1. JSON Dumps
+2. Logging System
 
 ## Project Structure
 
 ```
 HwSwProject/
-├── HwSwFinalProject (PDF format file in hebrew, includes all the project details and results, includes also hardware accelerator design.)
 ├── json_dumps_bench/
 │   ├── custom_json_benchmark.py
 │   ├── my_json_dumps.py
@@ -36,7 +35,7 @@ Key Features:
 - Custom JSON file support
 - Multiple test cases (EMPTY, SIMPLE, NESTED, HUGE)
 - Integration with faster JSON libraries
-- Detailed performance metrics
+- Smart caching mechanisms
 
 ### 2. Logging Benchmarking
 
@@ -57,20 +56,21 @@ Key Features:
 
 ```bash
 # Run basic benchmark
-python3 json_dumps_bench/custom_json_benchmark.py
+perf record -F 99 -g -- python3 json_dumps_bench/custom_json_benchmark.py --cases NESTED --impl baseline
 
 # Benchmark specific test cases
-python3 json_dumps_bench/custom_json_benchmark.py --cases SIMPLE,NESTED
+perf record -F 99 -g -- python3 json_dumps_bench/custom_json_benchmark.py --cases NESTED --impl optimized
+perf record -F 99 -g -- python3 json_dumps_bench/custom_json_benchmark.py --cases NESTED --impl fast
 ```
 
 ### Logging Benchmarking
 
 ```bash
 # Run standard benchmark
-python3 logging_bench/custom_logging_benchmark.py --mode std
+perf record -F 99 -g -- python3 logging_bench/custom_logging_benchmark.py --mode std -n 300000 --enabled-c
 
 # Run optimized benchmark
-python3 logging_bench/custom_logging_benchmark.py --mode my
+perf record -F 99 -g -- python3 logging_bench/custom_logging_benchmark.py --mode my -n 300000 --enabled-c
 ```
 
 ## Dependencies
@@ -94,11 +94,12 @@ pip install pyperf orjson ujson
 ## Performance Improvements
 
 ### JSON Dumps Component
-- 15-20% improvement from production Python build
-- 10-15% improvement from faster JSON libraries
-- 5-10% improvement from memory optimizations
-- **Total: 30-50% performance improvement**
-
+- Optimizations through:
+    - Fast-path recognition 
+    - Caching collections
+    - Compact separators 
+- **Total: x8.85 performance improvement**
+  
 ### Logging Component
 - Optimizations through:
   - Adaptive fields
