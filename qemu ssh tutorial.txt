@@ -1,6 +1,7 @@
 How to connect to the qemu via the vm? 
 [Your Local Machine] ←(VS Code SSH)→ [Intermediate VM] ←(QEMU)→ [QEMU VM]
 
+
 0: 
 copy the img the course staff gave us. 
 
@@ -59,6 +60,7 @@ nano ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
 
 6: we are ready to go - try to use the ssh connection via vscode to connect the qemu directly. 
+
 
 
 
