@@ -12,15 +12,20 @@ This project provides specialized benchmarking tools and acceleration for two cr
 
 ```
 HwSwProject/
-├── json_dumps_bench/
-│   ├── custom_json_benchmark.py
-│   ├── my_json_dumps.py
-│   └── README.md
-└── logging_bench/
-    ├── custom_logging_benchmark.py
-    ├── my_logging.py
-    └── README.md
+├── Benchmark_execution_scripts/ # Scripts for executing various benchmark scenarios
+├── json_dumps_bench/ # JSON serialization benchmarking tools
+│ ├── custom_json_benchmark.py # Enhanced benchmark for JSON operations
+│ ├── my_json_dumps.py # Optimized JSON dumps implementation
+│ └── README.md # JSON benchmarking documentation
+├── logging_bench/ # Logging performance optimization tools
+│ ├── custom_logging_benchmark.py # Configurable logging benchmarks
+│ ├── my_logging.py # Optimized logging implementation
+│ └── README.md # Logging benchmarking documentation
+└── README.md # Main project documentation
 ```
+
+
+
 
 ## Components
 
@@ -49,6 +54,30 @@ Key Features:
 - Multiple handler support
 - Smart caching mechanisms
 - Adaptive field computation
+
+### 3. Benchmark Execution Scripts
+
+The Benchmark_execution_scripts directory contains tools for automated benchmark execution and analysis:
+- Automated benchmark runners for both JSON and logging components
+- Result collection and analysis utilities
+- Performance comparison tools
+- Batch processing capabilities
+
+### 4. Project Summary and presentation
+
+- Hebrew PDF format of the project summary.
+- Powerpoint presentation of the project.
+- Both includes Hardware acceleration design.
+
+### 4. Project Summary and presentation
+
+- Hebrew PDF format of the project summary.
+
+### 5. Additional files:
+contains utility and support files for the project
+
+### 5. QEMU to connection via ssh tutorial
+
 
 ## Quick Start
 
