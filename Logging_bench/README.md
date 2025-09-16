@@ -64,5 +64,5 @@ perf record -F 99 -g -- python3 logging_bench/custom_logging_benchmark.py --mode
     - Fast-path for repetitive get_message operation
     - Handler chain caching 
 
-## Expected improvements:
+## Expected improvements :
 - **10-12% faster than basic logging verison**
