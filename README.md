@@ -96,10 +96,10 @@ perf record -F 99 -g -- python3 json_dumps_bench/custom_json_benchmark.py --case
 
 ```bash
 # Run standard benchmark
-perf record -F 99 -g -- python3 logging_bench/custom_logging_benchmark.py --mode std -n 300000 --enabled-checks --handler null -r 5
+perf record -F 99 -g -- python3 logging_bench/custom_logging_benchmark.py --mode std -n 30000 --enabled-checks --handler null -r 5
 
 # Run optimized benchmark
-perf record -F 99 -g -- python3 logging_bench/custom_logging_benchmark.py --mode my -n 300000 --enabled-checks --handler null -r 5
+perf record -F 99 -g -- python3 logging_bench/custom_logging_benchmark.py --mode my -n 30000 --enabled-checks --handler null -r 5
 ```
 
 ## Dependencies
