@@ -12,14 +12,16 @@ This project provides specialized benchmarking tools and acceleration for two cr
 
 ```
 HwSwProject/
-├── json_dumps_bench/
-│   ├── custom_json_benchmark.py
-│   ├── my_json_dumps.py
-│   └── README.md
-└── logging_bench/
-    ├── custom_logging_benchmark.py
-    ├── my_logging.py
-    └── README.md
+├── Benchmark_execution_scripts/    # Scripts for executing various benchmark scenarios
+├── json_dumps_bench/              # JSON serialization benchmarking tools
+│   ├── custom_json_benchmark.py   # Enhanced benchmark for JSON operations
+│   ├── my_json_dumps.py          # Optimized JSON dumps implementation
+│   └── README.md                 # JSON benchmarking documentation
+├── logging_bench/                # Logging performance optimization tools
+│   ├── custom_logging_benchmark.py # Configurable logging benchmarks
+│   ├── my_logging.py             # Optimized logging implementation
+│   └── README.md                 # Logging benchmarking documentation
+└── README.md                     # Main project documentation
 ```
 
 ## Components
@@ -28,8 +30,15 @@ HwSwProject/
 
 The JSON benchmarking component provides tools for testing and optimizing JSON serialization performance:
 
-- **custom_json_benchmark.py**: Enhanced benchmark supporting custom JSON files
-- **my_json_dumps.py**: Optimized JSON dumps implementation with performance hooks
+- **custom_json_benchmark.py**: Enhanced benchmark supporting custom JSON files with comprehensive test scenarios
+- **my_json_dumps.py**: Optimized JSON dumps implementation with performance hooks and memory efficiency improvements
+
+Implementation Details:
+- Fast-path recognition for common data structures
+- Caching collections to reduce allocation overhead
+- Compact separators for reduced output size
+- Integration with high-performance libraries (orjson, ujson)
+- Support for various test cases: EMPTY, SIMPLE, NESTED, HUGE
 
 Key Features:
 - Custom JSON file support
@@ -41,14 +50,29 @@ Key Features:
 
 The logging benchmarking component focuses on optimizing Python logging operations:
 
-- **custom_logging_benchmark.py**: Configurable logging performance tests
-- **my_logging.py**: Optimized logging implementation
+- **custom_logging_benchmark.py**: Configurable logging performance tests with multiple execution modes
+- **my_logging.py**: Optimized logging implementation with enhanced handler chain processing
+
+Implementation Details:
+- Adaptive field computation to minimize overhead
+- PID caching for process identification
+- Fast-path message operations for common scenarios
+- Handler chain optimization for reduced latency
+- Configurable test parameters for various workloads
 
 Key Features:
 - Configurable message counts and formats
 - Multiple handler support
 - Smart caching mechanisms
 - Adaptive field computation
+
+### 3. Benchmark Execution Scripts
+
+The Benchmark_execution_scripts directory contains tools for automated benchmark execution and analysis:
+- Automated benchmark runners for both JSON and logging components
+- Result collection and analysis utilities
+- Performance comparison tools
+- Batch processing capabilities
 
 ## Quick Start
 
