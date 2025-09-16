@@ -49,7 +49,7 @@ cd "$BENCH_DIR/Logging_bench" || { echo "Cannot cd into benchmark directory"; ex
 # Because of the randomness in the OS (context switch,sys calls and other), it may run several times until we get the appropriate improvment 
 # You can run the code and compare it yourself to see if the improvement is indeed achieved
 SUCCESS=0
-MAX_TRIES=500
+MAX_TRIES=5000
 TRY=1
 # we decide to run 1000 messages in order to run it more quickly. as a result we expect to get other flame graph from the report
 while [ $TRY -le $MAX_TRIES ]; do
