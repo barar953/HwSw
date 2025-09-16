@@ -1,6 +1,6 @@
 # Additional Files Directory
 
-This directory contains utility and support files for the project, organized into the following structure:
+This directory contains utility and support files for the project, organized into the following structure :
 
 ```Additional files/
 ├── Json_dumps/
