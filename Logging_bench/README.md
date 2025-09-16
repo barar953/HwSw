@@ -65,4 +65,4 @@ perf record -F 99 -g -- python3 logging_bench/custom_logging_benchmark.py --mode
     - Handler chain caching 
 
 ## Expected improvements :
-- **5-20% faster than basic logging verison**
+- **5+% faster than basic logging verison**
