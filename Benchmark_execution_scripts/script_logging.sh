@@ -52,7 +52,7 @@ cd "$BENCH_DIR/Logging_bench" || { echo "Cannot cd into benchmark directory"; ex
 # Run comparison script (same directory as custom_logging_benchmark.py)
 python3 compare_logging.py \
     --bench custom_logging_benchmark.py \
-    -n 300000 -r 5 --enabled-checks --handler null --formatter message \
+    -n 30000 -r 5 --enabled-checks --handler null --formatter message \
     --std-json logging_std.json --my-json logging_my.json \
     --std-perf perf_std.data --my-perf perf_my.data | tee comparison_logging.txt
 
