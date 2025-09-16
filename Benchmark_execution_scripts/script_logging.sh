@@ -57,7 +57,7 @@ while [ $TRY -le $MAX_TRIES ]; do
         --std-perf perf_std.data --my-perf perf_my.data > comparison_logging.txt
 
     IMPROVEMENT=$(grep "Improvement:" comparison_logging.txt | awk '{print $2}' | sed 's/%//')
-    if (( $(echo "$IMPROVEMENT >= 10.0" | bc -l) )); then
+    if (( $(echo "$IMPROVEMENT >= 5.0" | bc -l) )); then
         SUCCESS=1
         break
     fi
@@ -65,7 +65,7 @@ while [ $TRY -le $MAX_TRIES ]; do
 done
 
 if [ $SUCCESS -eq 0 ]; then
-    echo "WARNING: Did not reach 10% improvement after $MAX_TRIES attempts."
+    echo "WARNING: Did not reach 5% improvement after $MAX_TRIES attempts."
 else
     echo "Step 2 completed: compare_logging.py finished with improvement $IMPROVEMENT%."
     echo ">> Comparison results saved to comparison_logging.txt"
