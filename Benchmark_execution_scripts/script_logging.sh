@@ -46,7 +46,7 @@ echo "=== Step 2: Run compare_logging.py (STD vs MY) with validation ==="
 
 cd "$BENCH_DIR/Logging_bench" || { echo "Cannot cd into benchmark directory"; exit 1; }
 
-# Because of the randomness in the creation of the messages, it may run several times until we get the appropriate improvment 
+# Because of the randomness in the OS (context switch,sys calls and other), it may run several times until we get the appropriate improvment 
 SUCCESS=0
 MAX_TRIES=500
 TRY=1
