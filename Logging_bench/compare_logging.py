@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
-import argparse, json, subprocess, sys, shlex, os
+import argparse, json, subprocess, sys, shlex, os, shutil
 
-def run(cmd: str):
-    print(">>", cmd)
-    subprocess.check_call(cmd, shell=True)
+def run(cmd: str, quiet: bool = False):
+    """Run a shell command with optional quiet mode (suppress stdout/stderr)."""
+    if not quiet:
+        print(">>", cmd)
+    subprocess.run(
+        cmd,
+        shell=True,
+        stdout=subprocess.DEVNULL if quiet else None,
+        stderr=subprocess.DEVNULL if quiet else None,
+        check=True
+    )
 
 def run_one(mode: str, args, out_json: str, perf_data: str):
     """Run perf record ... python3 custom_logging_benchmark.py --mode <mode> ..."""
@@ -20,7 +28,7 @@ def run_one(mode: str, args, out_json: str, perf_data: str):
     ).strip()
 
     perf_cmd = f"perf record -F {args.perf_freq} -g -o {shlex.quote(perf_data)} -- {bench_cmd}"
-    run(perf_cmd)
+    run(perf_cmd, quiet=True)   # quiet mode suppresses perf output
 
 def read_mean_std(path: str):
     with open(path, "r", encoding="utf-8") as f:
@@ -30,7 +38,7 @@ def read_mean_std(path: str):
 def main():
     p = argparse.ArgumentParser(description="Run perf+benchmark for logging (STD vs MY) and compare.")
     p.add_argument("--bench", default="custom_logging_benchmark.py", help="Path to custom_logging_benchmark.py")
-    p.add_argument("-n", "--num-messages", type=int, default=300_000)
+    p.add_argument("-n", "--num-messages", type=int, default=30_000)
     p.add_argument("-r", "--repeat", type=int, default=5)
     p.add_argument("--enabled-checks", action="store_true", default=True)
     p.add_argument("--handler", choices=["null", "stream", "file"], default="null")
@@ -56,13 +64,21 @@ def main():
     mm, sm = read_mean_std(args.my_json)
     speedup = (ms / mm - 1.0) * 100.0
 
-    print(f"\nSTD logging: Mean +- std dev: {ms:.3f} s +- {ss:.3f} s")
-    print(f"MY  logging: Mean +- std dev: {mm:.3f} s +- {sm:.3f} s")
-    print(f"Improvement: {speedup:.2f}% faster")
+    result_txt = (
+        f"\nSTD logging: Mean +- std dev: {ms:.3f} s +- {ss:.3f} s\n"
+        f"MY  logging: Mean +- std dev: {mm:.3f} s +- {sm:.3f} s\n"
+        f"Improvement: {speedup:.2f}% faster\n"
+    )
+
+    print(result_txt)
+
+    # Save also to file
+    with open("comparison_logging.txt", "w", encoding="utf-8") as f:
+        f.write(result_txt)
+    print(">> Comparison results saved to comparison_logging.txt")
 
 if __name__ == "__main__":
-    # Require perf to be present
-    if not shutil.which("perf") if 'shutil' in globals() else __import__('shutil').which("perf") is None:
+    if shutil.which("perf") is None:
         print("ERROR: 'perf' not found in PATH. Please install linux-tools/perf.")
         sys.exit(1)
     main()
