@@ -42,10 +42,10 @@ Comapre the output log of the original benchmarke and the optimized verison :
 
 ```bash
 # Run standard benchmark
-perf record -F 99 -g -- python3 logging_bench/custom_logging_benchmark.py --mode std -n 300000 --enabled-checks --handler null -r 5
+perf record -F 99 -g -- python3 logging_bench/custom_logging_benchmark.py --mode std -n 30000 --enabled-checks --handler null -r 5
 
 # Run optimized benchmark
-perf record -F 99 -g -- python3 logging_bench/custom_logging_benchmark.py --mode my -n 300000 --enabled-checks --handler null -r 5
+perf record -F 99 -g -- python3 logging_bench/custom_logging_benchmark.py --mode my -n 30000 --enabled-checks --handler null -r 5
 ```
 
 ## Dependencies
@@ -65,4 +65,4 @@ perf record -F 99 -g -- python3 logging_bench/custom_logging_benchmark.py --mode
     - Handler chain caching 
 
 ## Expected improvements :
-- **8-12% faster than basic logging verison**
+- **10-20% faster than basic logging verison**
