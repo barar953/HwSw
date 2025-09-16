@@ -50,7 +50,7 @@ cd "$BENCH_DIR/Logging_bench" || { echo "Cannot cd into benchmark directory"; ex
 SUCCESS=0
 MAX_TRIES=500
 TRY=1
-
+# we decide to run 1000 messages in order to run it more quickly. as a result we expect to get other flame graph from the report
 while [ $TRY -le $MAX_TRIES ]; do
     python3 compare_logging.py \
         --bench custom_logging_benchmark.py \
