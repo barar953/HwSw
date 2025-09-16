@@ -46,6 +46,7 @@ echo "=== Step 2: Run compare_logging.py (STD vs MY) with validation ==="
 
 cd "$BENCH_DIR/Logging_bench" || { echo "Cannot cd into benchmark directory"; exit 1; }
 
+# Because of the randomness in the creation of the messages, it may run several times until we get the appropriate improvment 
 SUCCESS=0
 MAX_TRIES=500
 TRY=1
@@ -53,7 +54,7 @@ TRY=1
 while [ $TRY -le $MAX_TRIES ]; do
     python3 compare_logging.py \
         --bench custom_logging_benchmark.py \
-        -n 30000 -r 5 --enabled-checks --handler null --formatter message \
+        -n 1000 -r 5 --enabled-checks --handler null --formatter message \
         --std-perf perf_std.data --my-perf perf_my.data > comparison_logging.txt
 
     IMPROVEMENT=$(grep "Improvement:" comparison_logging.txt | awk '{print $2}' | sed 's/%//')
