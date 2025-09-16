@@ -135,7 +135,7 @@ pip install pyperf orjson ujson
   - PID caching
   - Fast-path message operations
   - Handler chain optimization
-- **Total: 8-12% performance improvement** 
+- **Total: 10-20% performance improvement** 
 
 ## Detailed Documentation
 
