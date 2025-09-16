@@ -1,6 +1,6 @@
 # Benchmark Execution Scripts
 
-This directory contains benchmark execution scripts for the project.
+This directory contains benchmark execution scripts for the project
 
 ## Before Running the Scripts
 
