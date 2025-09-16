@@ -139,6 +139,6 @@ pip install pyperf orjson ujson
 
 ## Detailed Documentation
 
-For more detailed information about each component, please refer to:
+For more detailed information about each component, please refer to :
 - JSON Dumps: [json_dumps_bench/README.md](json_dumps_bench/README.md)
 - Logging: [logging_bench/README.md](logging_bench/README.md)
